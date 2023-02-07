@@ -57,9 +57,14 @@ public class WanderingAI : MonoBehaviour
                         laserbeam.transform.position = transform.TransformPoint(0, 1.5f, 1.5f);
                         laserbeam.transform.rotation = transform.rotation;
                     }
+                    else
+                    {
+                        Debug.Log("don't fire");
+                    }
                 }
                 else if (hit.distance < obstacleRange)
                 {
+                    Debug.Log("avoiding barrier");
                     float turnAngle = Random.Range(-110, 110);
                     transform.Rotate(Vector3.up * turnAngle);
                 }

@@ -7,8 +7,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     private GameObject enemy;
     private Vector3 spawnPoint = new Vector3(0, 0, 5);
-    [SerializeField] private int maxEnemies = 3;
-    private int enemiesSpawned = 0;
+     private int maxEnemies = 1;
+    GameObject[] numEnemies;
     void Start()
     {
         
@@ -16,8 +16,8 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        GameObject[] numEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemy == null || numEnemies.Length < maxEnemies)
+        numEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (numEnemies.Length < maxEnemies)
         {
             enemy = Instantiate(enemyPrefab) as GameObject;
             enemy.transform.position = spawnPoint;
