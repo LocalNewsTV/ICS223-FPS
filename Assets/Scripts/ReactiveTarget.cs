@@ -11,12 +11,14 @@ public class ReactiveTarget : MonoBehaviour
         {
             enemyAI.ChangeState(EnemyStates.dead);
         }
-        StartCoroutine(Die());
+        Animator enemyAnimator = GetComponent<Animator>();
+        if (enemyAnimator != null)
+        {
+            enemyAnimator.SetTrigger("die_trig");
+        }
     }
-    private IEnumerator Die()
+    private void DeadEvent() 
     {
-        iTween.RotateAdd(this.gameObject, new Vector3(-75, 0, 0), 1);
-        yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
     }
 }
